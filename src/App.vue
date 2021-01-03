@@ -10,29 +10,13 @@
        </transition>
     </div>
     <router-view name="footer"/>
-    <!-- vueX -->
-    
-      <!-- <h1>VueX section</h1>
-      <hr> -->
-      <!-- Hàm đơn giản thì xử lý trực tiếp luôn không cần khai báo hàm phía dưới -->
-      <!-- <button v-on:click="counter += 1">Add {{ counter }} </button>
-      <p>The button above has been clicked {{ counter }} times.</p> -->
-      <!-- chưa sử dụng store vuex-->
-      <!-- <change @updatein="result+=$event"/> -->
-      <!-- <result :result="result"/> -->
-      <!-- sử dụng store vuex -->
-      <!-- <change/>
-      <other/>
-      <result/> -->
+
 
     
   </div>
 </template>
 
 <script>
-import Change from './components/Change.vue';
-import Result from './components/Result.vue';
-import Other from './components/Other.vue';
 export default {
   name: "app",
   data(){
@@ -41,9 +25,7 @@ export default {
     }
   },
   components:{
-    Result,
-    Change,
-    Other
+
   },
   methods:{
 

@@ -5,24 +5,19 @@ import ErrorPage from '@/components/layout/Error404'
 import HeaderAcc from '@/components/layout/HeaderAcc'
 import Footer from '@/components/layout/Footer'
 import Home from '@/components/HelloWorld'
-import Account from '@/components/Account'
-import About from '@/components/Contact'
-import ListPost from '@/components/Friends'
-import AccountID from '@/components/account/AccountDetails'
-import ListAccount from '@/components/account/AccountBegin'
-import Edit from '@/components/account/AccountEdit'
 
+import About from '@/components/About'
+import ListPost from '@/components/ListPost'
+import PostDetail from '@/components/PostDetails'
+import DetailPost from '@/components/DetailPost'
+
+Vue.prototype.$http = axios
 Vue.use(Router)
 
 export default new Router({
   //loại bỏ dấu # trong url
   mode: 'history',
-  //roll đến id chỉ định(ở đây roll đến thành phần trong đoạn văn có gắn id)
-  scrollBehavior(to,from,savedPosition){
-    if(to.hash){
-      return {selector:to.hash}
-    }
-  },
+  
   routes: [
     {
       //đường dẫn
@@ -44,16 +39,11 @@ export default new Router({
     {
       path: '/posts',
       name: 'ListPost',
-      components: {default:ListPost,'footer':Footer,'header-acc':HeaderAcc},
+      components: {default:ListPost,'header-acc':HeaderAcc},
       children:[
-        { path:"",name:"listAccount",component:ListAccount },
-        //beforeEnter : đã chuyển hướng component mới xuất hiện
-        { path:":id",name:"accountID",component:AccountID,beforeEnter:(to,from,next)=>{console.log('beforeEnter'); next();} },
-        { path:":id/:name/:age/edit",name:"accountEdit",component:Edit }
+        { path:"", props:true ,name:"detailPost",component:DetailPost },
+        {path:"/posts/:id",props:true,name:"postDetail",component:PostDetail}
       ]
-    },
-    {
-      path:'/auth', redirect:{name:'Hello'}
     },
     {
       path:'/404',name:'errorPage',component:ErrorPage

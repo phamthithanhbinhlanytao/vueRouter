@@ -1,15 +1,12 @@
 <template>
   <div>
-    <h1>Friends</h1>
-    {{$route.params.name}}
+   
+    <router-view/>
   </div>
 </template>
 
 <script>
 export default {  
-  props: [
-    'name'
-  ]
 
 }
 </script>
